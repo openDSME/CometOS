@@ -57,17 +57,19 @@ void DSMEMessage::prependFrom(DSMEMessageElement* me) {
 }
 
 void DSMEMessage::decapsulateTo(DSMEMessageElement* me) {
-    me->copyFrom(this);
+    //me->copyFrom(this);   //PHIL: commented, as it is removed
     ASSERT(this->frame->getLength() >= me->getSerializationLength());
     this->frame->setLength(this->frame->getLength()-me->getSerializationLength());
     memmove(this->frame->getData(), this->frame->getData()+me->getSerializationLength(), this->frame->getLength());
 }
 
+/* PHIL: commented as it is removed
 void DSMEMessage::copyTo(DSMEMessageElement* me) {
     Serializer s(this->frame->getData(), DESERIALIZATION);
     me->serialize(s);
     ASSERT(this->frame->getData()+me->getSerializationLength() == s.getData());
 }
+*/
 
 cometos::AirframePtr DSMEMessage::getSendableCopy() {
     DSME_ASSERT(frame);

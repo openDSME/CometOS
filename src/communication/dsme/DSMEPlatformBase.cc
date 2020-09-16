@@ -209,7 +209,7 @@ void DSMEPlatformBase::rxEnd(AirframePtr frame, node_t src, node_t dst, MacRxInf
 
 void DSMEPlatformBase::printDSMEManagement(uint8_t management, DSMESABSpecification& subBlock, CommandFrameIdentifier cmd) {
     uint8_t numChannels = this->dsmeAdaptionLayer.getMAC_PIB().helper.getNumChannels();
-    uint8_t numGTSlots = this->dsmeAdaptionLayer.getMAC_PIB().helper.getNumGTSlots();
+    uint8_t numGTSlots = this->dsmeAdaptionLayer.getMAC_PIB().helper.getNumGTSlots(0);  //PHIL: added dummy SuperframeID 
     uint8_t numSuperFramesPerMultiSuperframe = this->dsmeAdaptionLayer.getMAC_PIB().helper.getNumberSuperframesPerMultiSuperframe();
 
     LOG_INFO_PURE(" ");
@@ -237,12 +237,12 @@ void DSMEPlatformBase::printDSMEManagement(uint8_t management, DSMESABSpecificat
         LOG_INFO_PURE((uint16_t) management);
     }
 
+    //PHIL: replaced with different constructor
     if(subBlock.getSubBlock().count(true) == 1) {
         for (DSMESABSpecification::SABSubBlock::iterator it = subBlock.getSubBlock().beginSetBits(); it != subBlock.getSubBlock().endSetBits();
                 it++) {
-            GTS gts = GTS::GTSfromAbsoluteIndex((*it) + subBlock.getSubBlockIndex() * numGTSlots * numChannels, numGTSlots, numChannels,
-                    numSuperFramesPerMultiSuperframe);
-
+            // this calculation assumes there is always exactly one superframe in the subblock
+            GTS gts(subBlock.getSubBlockIndex(), (*it) / numChannels, (*it) % numChannels);
             LOG_INFO_PURE(" " << gts.slotID << " " << gts.superframeID << " " << (uint16_t)gts.channel);
         }
     }

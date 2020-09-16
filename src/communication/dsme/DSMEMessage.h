@@ -69,13 +69,15 @@ public:
     void prependFrom(DSMEMessageElement* msg) override;
 
     void decapsulateTo(DSMEMessageElement* msg) override;
-
-    void copyTo(DSMEMessageElement* msg) override;
-
+   
+    //PHIL: commented as it is removed
+    //void copyTo(DSMEMessageElement* msg) override;
+    /*
     uint8_t getByte(uint8_t pos) override {
         return frame->getData()[pos];
     }
-
+    */
+    
     bool hasPayload() override {
         return (frame->getLength() > 0 );
     }
@@ -97,10 +99,14 @@ public:
         return startOfFrameDelimiterSymbolCounter;
     }
 
-    uint32_t getReceptionSymbolCounter() override {
-        return startOfFrameDelimiterSymbolCounter + 2 * (this->getHeader().getSerializationLength() + frame->getLength()) + 2; // 2 Symbols for PHY header
+    void setStartOfFrameDelimiterSymbolCounter(uint32_t) override {
+
     }
 
+    uint8_t getMPDUSymbols() override {
+        return 0;
+    }
+ 
     IEEE802154eMACHeader& getHeader() override {
         return macHdr;
     }
