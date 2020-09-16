@@ -73,7 +73,7 @@ void DSMEPlatform::initialize() {
 
     channelList_t scanChannels;
     scanChannels.add(MAC_DEFAULT_CHANNEL);
-    this->dsmeAdaptionLayer.initialize(scanChannels,&scheduling);
+    this->dsmeAdaptionLayer.initialize(scanChannels,0,&scheduling); //PHIL scanDuration dummy = 0
 
     /* Initialize Address */
     IEEE802154MacAddress address;
@@ -105,7 +105,8 @@ void DSMEPlatform::initialize() {
 
     this->phy_pib.phyCurrentChannel = MAC_DEFAULT_CHANNEL;
 
-    this->dsmeAdaptionLayer.settings.allocationScheme = DSMEAdaptionLayerSettings::ALLOC_CONTIGUOUS_SLOT;
+    //PHIL:removed settings
+    //this->dsmeAdaptionLayer.settings.allocationScheme = DSMEAdaptionLayerSettings::ALLOC_CONTIGUOUS_SLOT;
 
     this->dsmeAdaptionLayer.setIndicationCallback(DELEGATE(&DSMEPlatform::handleDataMessageFromMCPS, *this));
     this->dsmeAdaptionLayer.setConfirmCallback(DELEGATE(&DSMEPlatform::handleConfirmFromMCPS, *this));
