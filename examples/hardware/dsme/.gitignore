@@ -1,0 +1,4 @@
+build/
+*.dblite
+*.map
+mapping.txt

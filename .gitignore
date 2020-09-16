@@ -41,3 +41,4 @@ src/python/stack/*.pyc
 !src/communication/mis/*~
 !src/communication/algorithms/*~
 !examples/simulation/topologies/custom/*~
+*.pyc
