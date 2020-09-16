@@ -53,5 +53,7 @@ env.add_sources(map(lambda x: 'openDSME/'+x, [
 'dsmeLayer/DSMEEventDispatcher.cc',
 'dsmeLayer/gtsManager/GTSData.cc',
 'dsmeLayer/gtsManager/GTSManager.cc',
-'dsmeLayer/gtsManager/ACTUpdater.cc'
+'dsmeLayer/gtsManager/ACTUpdater.cc',
+'mac_services/dataStructures/ChannelHoppingSpecification.cc',
+'dsmeAdaptionLayer/MessageHelper.cc'
 ]))
