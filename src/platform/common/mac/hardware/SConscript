@@ -3,6 +3,7 @@ Import('env')
 env.Append(CPPPATH=[Dir('.')])
 
 env.conf_to_str_define([
+'default_scanduration',
 'mac_default_channel',
 'MAC_DEFAULT_NWK_ID',
 'MAC_DEFAULT_FRAME_RETRIES',

@@ -209,7 +209,7 @@ void DSMEPlatformBase::rxEnd(AirframePtr frame, node_t src, node_t dst, MacRxInf
 
 void DSMEPlatformBase::printDSMEManagement(uint8_t management, DSMESABSpecification& subBlock, CommandFrameIdentifier cmd) {
     uint8_t numChannels = this->dsmeAdaptionLayer.getMAC_PIB().helper.getNumChannels();
-    uint8_t numGTSlots = this->dsmeAdaptionLayer.getMAC_PIB().helper.getNumGTSlots(0);  //PHIL: added dummy SuperframeID 
+    //PHIL: removed GTSlots, not used
     uint8_t numSuperFramesPerMultiSuperframe = this->dsmeAdaptionLayer.getMAC_PIB().helper.getNumberSuperframesPerMultiSuperframe();
 
     LOG_INFO_PURE(" ");

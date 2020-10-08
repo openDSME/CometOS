@@ -73,7 +73,7 @@ void DSMEPlatform::initialize() {
 
     channelList_t scanChannels;
     scanChannels.add(MAC_DEFAULT_CHANNEL);
-    this->dsmeAdaptionLayer.initialize(scanChannels,0,&scheduling); //PHIL scanDuration dummy = 0
+    this->dsmeAdaptionLayer.initialize(scanChannels,DEFAULT_SCANDURATION,&scheduling); //PHIL scanDuration dummy = 0
 
     /* Initialize Address */
     IEEE802154MacAddress address;

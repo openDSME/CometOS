@@ -120,10 +120,8 @@ public:
         return 140;
     }
 
-    //PHIL: added dummy
-    uint8_t getChannelNumber() override{
-        return 0;
-    }
+    //PHIL: added virtual
+    virtual uint8_t getChannelNumber() = 0;
 
 protected:
     virtual void signalNewMsg(DSMEMessage* msg) {}

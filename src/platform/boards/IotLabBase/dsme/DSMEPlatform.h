@@ -79,6 +79,11 @@ public:
 
     bool setChannelNumber(uint8_t k) override;
 
+    //PHIL: added function
+    uint8_t getChannelNumber() override{
+        return channel;
+    }
+
     DSMELayer& getDSME() {
         return dsme;
     }
