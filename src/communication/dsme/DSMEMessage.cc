@@ -58,6 +58,9 @@ void DSMEMessage::prependFrom(DSMEMessageElement* me) {
 
 void DSMEMessage::decapsulateTo(DSMEMessageElement* me) {
     //me->copyFrom(this);   //PHIL: commented, as it is removed
+    Serializer serializer(this->frame->getData(), DESERIALIZATION);
+    me->serialize(serializer);
+
     ASSERT(this->frame->getLength() >= me->getSerializationLength());
     this->frame->setLength(this->frame->getLength()-me->getSerializationLength());
     memmove(this->frame->getData(), this->frame->getData()+me->getSerializationLength(), this->frame->getLength());

@@ -50,7 +50,9 @@
 
 /*PROTOTYPES-----------------------------------------------------------------*/
 
-using namespace cometos;
+using namespace cometos; 
+
+int __dso_handle; /* !!!!!!!!!!!! DIRTY_FIX FOR MISSING __DSO_HANDLE DURING LINKING !!!!!!!!!!!!! */
 
 #ifdef DSME
 dsme::DSMEPlatform mac("mac");
@@ -58,8 +60,8 @@ dsme::DSMEPlatform mac("mac");
 CsmaMac mac("mac");
 #endif
 
-//#define DSME_LOG LOG_LEVEL_ERROR
-#define DSME_LOG LOG_LEVEL_INFO
+#define DSME_LOG LOG_LEVEL_ERROR
+//#define DSME_LOG LOG_LEVEL_DEBUG
 
 int main() {
     TrafficEvaluation* traffic;
