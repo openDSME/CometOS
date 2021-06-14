@@ -47,7 +47,7 @@ This describes how to compile and flash a minimal example to a ATmega128RFA1 bas
 
 2. Clone the repository to a location of your choice. For the following we assume ~/cometos 
 
-        git clone https://github.com/CometOS/CometOS.git ~/cometos
+        git clone https://github.com/openDSME/CometOS.git ~/cometos
 
 3. Add the required paths
 
@@ -70,7 +70,7 @@ This describes how to compile and flash a minimal example to a ATmega128RFA1 bas
 
 2. Clone the repository to a location of your choice. For the following we assume ~/cometos 
 
-        git clone https://github.com/CometOS/CometOS.git ~/cometos
+        git clone https://github.com/openDSME/CometOS.git ~/cometos
 
 3. Create a new OMNeT++ project, but use `~/cometos` as the location.
 
